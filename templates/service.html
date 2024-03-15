@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content  %}
+
+    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'main:index' %}">Home</a></span> <span>Servis</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Servislar</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section services-section bg-light">
+        <div class="container">
+            <div class="row d-flex" style="display: flex; justify-content: space-evenly;">
+				<div class="col-md-12 text-center heading-section ftco-animate">
+					<h2 class="mb-3" style="padding: 50px;">Servislar</h2>
+				</div>
+                {% for service in services %}
+                    <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                        <div class="media block-6 services d-block">
+                            <div class="icon"><img style="width: 60px;" src="{{service.icon.url}}" alt=""></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">{{service.name}}</h3>
+                                <p>{{service.body}}.</p>
+                            </div>
+                        </div>      
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

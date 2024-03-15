@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content  %}
+
+    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'main:index' %}">Home</a></span> <span>Mashhur joylar</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Manzillar</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+		
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Bizning yangi ta'til g'oyalarimiz</h2>
+          </div>
+        </div>
+        <div class="row" style="display: flex; justify-content: center;">
+        	<div class="col-md-5 ftco-animate align-items-center">
+        		<a href="#" class="destination-entry img" style="background-image: url({% static 'images/destination-1.jpg' %});">
+        			<div class="text text-center">
+        				<h3>Sohil manzarasi</h3>
+        			</div>
+        		</a>
+        	</div>
+        	<div class="col-md-5 ftco-animate align-items-center">
+        		<a href="#" class="destination-entry img" style="background-image: url({% static 'images/destination-3.jpg' %});">
+        			<div class="text text-center">
+        				<h3>Shahar manzaralari</h3>
+        			</div>
+        		</a>
+        	</div>
+        </div>
+    	</div>
+    </section>
+		
+
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row" style="display: flex; justify-content:space-around;">
+          <div class="col-lg-9">
+          	<div class="row">
+				{% for place in places %}
+					<div class="col-sm col-md-6 col-lg-6 ftco-animate justify-content-center">
+						<div class="destination">
+							<a href="{{place.url}}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{place.image.url}});">
+								<div class="icon d-flex justify-content-center align-items-center">
+									<span class="icon-link"></span>
+								</div>
+							</a>
+							<div class="text p-3">
+								<div class="d-flex">
+									<div class="one">
+										<h3><a href="#">{{place.title}}</a></h3>
+										<p class="rate">
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star-o"></i>
+											<span>8 Rating</span>
+										</p>
+									</div>
+									<div class="two">
+										<span class="price">${{place.price}}</span>
+									</div>
+								</div>
+								<p>{{place.body}}</p>
+								<p class="days"><span>{{place.how_long}}</span></p>
+								<hr>
+								<p class="bottom-area d-flex">
+									<span><i class="icon-map-o"></i> {{place.where}}</span> 
+									<span class="ml-auto"><a href="{{place.url}}">Batafsil</a></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+          	</div>
+          	<div class="row mt-5">
+		          <div class="col text-center ">
+		            <div class="block-27">
+		              <ul>
+		                <li><a href="#">&lt;</a></li>
+		                <li class="active"><span>1</span></li>
+		                <li><a href="#">&gt;</a></li>
+		              </ul>
+		            </div>
+		          </div>
+		        </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+{% endblock %}

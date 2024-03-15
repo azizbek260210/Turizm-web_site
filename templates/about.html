@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content  %}
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'main:index' %}">Home</a></span> <span>About</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Biz Haqimizda</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4" style="display: flex; justify-content: center;">
+    				<div class="intro">
+    					<h3><span>01</span> Sayohat</h3>
+    					<p>Biz sizni istalgan manzilingizga olib boramiz va Comfort zonani ta'minlaymiz.</p>
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="intro">
+    					<h3><span>02</span> Tajriba</h3>
+    					<p>Bizda tajribali ishchilar ishlaydi Ular juda ko'p vaqtdan beri bu ish bilan ishlashadi.</p>
+    				</div>
+    			</div>
+    			<div class="col-md-4">
+    				<div class="intro">
+    					<h3><span>03</span> Hordiq</h3>
+    					<p>Biz sizni olib boradigan joylarda siz kutmagan narsalar bor: Atraktsionlar, Basseynlar va Boshqalar.</p>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+
+    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+    	<div class="container">
+    		<div class="row justify-content-center">
+    			<div class="col-md-10">
+		    		<div class="row" style="display: flex; justify-content: center;">
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="{{contacts | length}}">0</strong>
+		                <span>Mijozlar</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="{{places | length}}">0</strong>
+		                <span>Mashhur Joylar</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="{{hotels | length}}">0</strong>
+		                <span>Hotellar</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+		
+		<section class="ftco-about d-md-flex">
+    	<div class="one-half img" style="background-image: url({% static 'images/about.jpg' %});"></div>
+    	<div class="one-half ftco-animate">
+        <div class="heading-section ftco-animate ">
+          <h2 class="mb-4">{{about.title}}</h2>
+        </div>
+        <div>
+  				<p>{{about.body}}.</p>
+  			</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <h2 class="mb-4">Mijozlarning fikrlari</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              {% for contact in contacts %}
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url({% static 'images/person_1.jpg' %})">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="name">{{contact.name}}</p>
+                    <p class="mb-5">{{contact.body}}.</p>
+                    <span class="position"></span>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
